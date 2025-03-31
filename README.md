@@ -2,26 +2,6 @@
 
 This real-time collaboration app allows users to **edit** and **chat** in real-time. The editor allows simultaneous text editing while the chatbox provides instant messaging. Both features are powered by **Socket.IO** for real-time communication and **React** for frontend management.
 
-## Table of Contents
-
-Real_Time_Collaboration/
-│── backend/
-│   │── server.js
-│   │── package.json
-│   │── .env (optional for configurations)
-│── frontend/
-│   │── src/
-│   │   │── components/
-│   │   │   │── Editor.js
-│   │   │   │── ChatBox.js
-│   │── App.js
-│   │── index.js
-│   │── package.json
-│── README.md
-│── .gitignore
-
-
-
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -100,7 +80,3 @@ You can extend this app's functionality with new features. Here are some ideas f
 - **Real-time collaborative editor:** Extend the editor to support rich text formatting or syntax highlighting.
 - **User authentication:** Integrate user authentication to personalize the experience, showing different names and profiles in the chat.
 - **File sharing:** Enable users to send files through the chat.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
