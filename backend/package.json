@@ -1,7 +1,6 @@
 {
   "name": "real_time_collaboration_backend",
   "version": "1.0.0",
-  "description": "Backend for Real-Time Collaboration App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
