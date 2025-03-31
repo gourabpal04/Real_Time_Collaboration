@@ -8,35 +8,26 @@ const path = require('path');
 const app = express();
 const server = http.createServer(app);
 
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
+const PORT = process.env.PORT || 5000;
+const CORS_ORIGIN = process.env.CORS_ORIGIN || "*";
 
-app.use(cors());
+app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json());
-
-// Serve frontend in   production
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });
 
-// WebSocket Connection
-io.on("connection", (socket) => {
-  console.log("User connected:", socket.id);
-
-  socket.on("message", (data) => {
-    io.emit("message", data);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("User disconnected:", socket.id);
-  });
+const io = new Server(server, {
+  cors: { origin: CORS_ORIGIN, methods: ["GET", "POST"] }
 });
 
-const PORT = process.env.PORT || 5000;
+io.on("connection", (socket) => {
+  console.log(`User connected: ${socket.id}`);
+
+  socket.on("message", (data) => io.emit("message", data));
+  socket.on("disconnect", () => console.log(`User disconnected: ${socket.id}`));
+});
+
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
