@@ -4,7 +4,22 @@ This real-time collaboration app allows users to **edit** and **chat** in real-t
 
 ## Table of Contents
 
-Real_Time_Collaboration/ │── backend/ │ │── server.js │ │── package.json │ │── .env (optional for configurations) │── frontend/ │ │── src/ │ │ │── components/ │ │ │ │── Editor.js │ │ │ │── ChatBox.js │ │── App.js │ │── index.js │ │── package.json │── README.md │── .gitignore
+Real_Time_Collaboration/
+│── backend/
+│   │── server.js
+│   │── package.json
+│   │── .env (optional for configurations)
+│── frontend/
+│   │── src/
+│   │   │── components/
+│   │   │   │── Editor.js
+│   │   │   │── ChatBox.js
+│   │── App.js
+│   │── index.js
+│   │── package.json
+│── README.md
+│── .gitignore
+
 
 
 ## Getting Started with Create React App
