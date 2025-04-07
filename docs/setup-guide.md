@@ -1,165 +1,154 @@
+Here's the **full content** for `setup-guide.md` that you can directly save as a `.md` file:
+
 ```markdown
-# 🛠️ Real-Time Collaboration App – Setup Guide
+# ⚙️ Setup Guide - Real-Time Collaboration App
 
-Welcome to the setup documentation for the **Real-Time Collaboration App**.
-
-📦 GitHub Repo: [https://github.com/gourabpal04/Real_Time_Collaboration](https://github.com/gourabpal04/Real_Time_Collaboration)  
-📧 Email: 04gourabpal@gmail.com  
-🔗 LinkedIn: [Gourab Pal](https://www.linkedin.com/in/gourab-pal-828078248/)
+Welcome! Follow this guide to set up the project for development, testing, and containerization on your local machine.
 
 ---
 
-## 📚 Table of Contents
-
-- [🧱 Project Structure](#project-structure)
-- [⚙️ Environment Variables](#environment-variables)
-- [🚀 Start the App](#start-the-app)
-- [🧪 Run Tests](#run-tests)
-- [🐳 Docker Deployment](#docker-deployment)
-- [📊 Code Coverage](#code-coverage)
-- [💬 WebSocket Features](#websocket-features)
-- [🛠️ Troubleshooting](#troubleshooting)
-- [📬 Contact](#contact)
-
----
-
-## 🧱 Project Structure
+## 📁 Project Structure
 
 ```
 Real_Time_Collaboration/
 ├── backend/
-│   ├── server.js
-│   ├── ...
-│
 ├── frontend/
-│   ├── src/
-│   ├── ...
-│
 ├── tests/
-│   ├── e2e/
-│   ├── coverage/
-│   └── ...
-│
 ├── deployment/
-│   ├── Dockerfile
-│   ├── docker-compose.yml
-│   └── ci-config.yml
-│
 ├── docs/
-│   └── setup-guide.md
 ```
 
 ---
 
-## ⚙️ Environment Variables
+## 📦 Prerequisites
 
-Create a `.env` file in both `backend/` and `frontend/` with appropriate variables.
+Make sure you have the following installed:
 
-Example for `backend/.env`:
-
-```
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/realtime_db
-JWT_SECRET=your_jwt_secret
-```
-
-Example for `frontend/.env`:
-
-```
-REACT_APP_BACKEND_URL=http://localhost:5000
-```
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [MongoDB](https://www.mongodb.com/) (local or Atlas)
+- [Docker](https://www.docker.com/) (optional)
+- [Git](https://git-scm.com/)
 
 ---
 
-## 🚀 Start the App
+## 🛠️ Backend Setup
 
-Start backend & frontend separately:
+1. Navigate to the backend directory:
 
-```
-# Backend
-cd backend
-npm install
-npm run dev
-```
+   ```bash
+   cd backend
+   ```
 
-```
-# Frontend
-cd frontend
-npm install
-npm start
-```
+2. Install dependencies:
 
----
+   ```bash
+   npm install
+   ```
 
-## 🧪 Run Tests
+3. Create a `.env` file in the `backend/` folder and add:
 
-Run Cypress E2E tests:
+   ```env
+   PORT=5000
+   MONGO_URI=mongodb://localhost:27017/realtime-collab
+   JWT_SECRET=your_jwt_secret_key
+   ```
 
-```
-cd frontend/tests
-npx cypress open
-```
+4. Start the development server:
 
-For headless mode with code coverage:
+   ```bash
+   npm run dev
+   ```
 
-```
-npx cypress run
-```
+   The backend API will be available at `http://localhost:5000`.
 
 ---
 
-## 🐳 Docker Deployment
+## 💻 Frontend Setup
 
-To run everything using Docker:
+1. Navigate to the frontend directory:
 
-```
-docker-compose up --build
-```
+   ```bash
+   cd frontend
+   ```
 
-To stop:
+2. Install dependencies:
 
-```
-docker-compose down
-```
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the `frontend/` folder and add:
+
+   ```env
+   REACT_APP_BACKEND_URL=http://localhost:5000
+   ```
+
+4. Start the React development server:
+
+   ```bash
+   npm start
+   ```
+
+   The app will be available at `http://localhost:3000`.
 
 ---
 
-## 📊 Code Coverage
+## 🧪 Running Cypress Tests
 
-After running tests with coverage, results are saved in:
+1. Go to the test directory:
+
+   ```bash
+   cd frontend/tests
+   ```
+
+2. Open the Cypress UI:
+
+   ```bash
+   npx cypress open
+   ```
+
+   Or run tests in headless mode:
+
+   ```bash
+   npx cypress run
+   ```
+
+3. Cypress uses mock fixtures and intercepts in the `cypress/fixtures/` and `cypress/support/` directories.
+
+---
+
+## 📊 Code Coverage (Optional)
+
+If enabled, after running tests, coverage reports are available under:
 
 ```
 frontend/tests/coverage/lcov-report/index.html
 ```
 
-Open in a browser to view.
+Open in your browser to view the visual report.
 
 ---
 
-## 💬 WebSocket Features
+## 🐳 Docker Setup (Optional)
 
-- Real-time collaborative editing
-- Live chat messaging
-- User presence indicators (online/editing)
+1. From the root of the project:
 
----
+   ```bash
+   docker-compose up --build
+   ```
 
-## 🛠️ Troubleshooting
+2. Visit the following in your browser:
 
-> ✅ **Port in use?**  
-Stop all running apps or change port in `.env`.
-
-> ❌ **MongoDB not connected?**  
-Ensure Mongo is running locally or check `MONGO_URI`.
-
-> 🧪 **Tests failing?**  
-Make sure backend server is up before running Cypress tests.
+   - Frontend: `http://localhost:3000`
+   - Backend API: `http://localhost:5000/api`
 
 ---
 
-## 📬 Contact
+## 📄 Documentation
 
-- 📧 Email: 04gourabpal@gmail.com  
-- 🔗 LinkedIn: [Gourab Pal](https://www.linkedin.com/in/gourab-pal-828078248/)  
-- 🧑‍💻 GitHub: [gourabpal04](https://github.com/gourabpal04)
-```
+- [API Docs](./api-docs.md)
+- [Component Docs](./component-docs.md)
+
+---
+
+✅ You’re all set to contribute and collaborate!
