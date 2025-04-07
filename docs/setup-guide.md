@@ -1,3 +1,4 @@
+cat > setup-guide.md << 'EOF'
 # 🛠️ Real-Time Collaboration App – Setup Guide
 
 Welcome! This guide will help you get the Real-Time Collaboration App up and running, test it, and understand its structure.
@@ -33,20 +34,25 @@ Real_Time_Collaboration/
 1. **Install Node.js & MongoDB**
 2. Create `.env` files in both `/backend` and `/frontend`:
    - Example for backend:
-     ```
+     \`\`\`
      PORT=5000
      MONGO_URI=mongodb://localhost:27017/realtimeapp
      JWT_SECRET=your_secret_key
-     ```
+     \`\`\`
 
 3. Install dependencies:
-   ```bash
+   \`\`\`bash
    cd backend && npm install
    cd ../frontend && npm install
-   
-🚀 Start the App
+   \`\`\`
+
+---
+
+## 🚀 Start the App
+
 Start backend & frontend separately:
 
+\`\`\`bash
 # Backend
 cd backend
 npm run dev
@@ -54,45 +60,75 @@ npm run dev
 # Frontend
 cd frontend
 npm start
+\`\`\`
 
-🧪 Run Tests
+---
+
+## 🧪 Run Tests
+
 Cypress E2E tests:
 
+\`\`\`bash
 cd frontend/tests
 npx cypress open
+\`\`\`
+
 For headless testing with coverage:
-
+\`\`\`bash
 npx cypress run
+\`\`\`
 
-🐳 Docker Deployment
+---
+
+## 🐳 Docker Deployment
+
 To run everything using Docker:
 
+\`\`\`bash
 docker-compose up --build
+\`\`\`
+
 To stop:
 
+\`\`\`bash
 docker-compose down
+\`\`\`
 
-📊 Code Coverage
+---
+
+## 📊 Code Coverage
+
 After running tests with coverage, results are saved in:
 
+\`\`\`
 frontend/tests/coverage/lcov-report/index.html
+\`\`\`
 
-💬 WebSocket Features
-Real-time text syncing between users
+Open in a browser to view.
 
-Instant messaging via chat socket
+---
 
-Presence indicators (who’s online/editing)
+## 💬 WebSocket Features
 
-🛠️ Troubleshooting
-Port in use? Stop all running apps or change the port in .env
+- Real-time text syncing between users
+- Instant messaging via chat socket
+- Presence indicators (who’s online/editing)
 
-MongoDB not connected? Make sure it's running locally or update MONGO_URI
+---
 
-Tests fail? Ensure server is running before executing Cypress
+## 🛠️ Troubleshooting
 
-📬 Contact
-For bugs, feedback, or contributions:
-📧 04gourabpal@gmail.com
-🔗 GitHub: https://github.com/gourabpal04/Real_Time_Collaboration
+- **Port in use?** Stop all running apps or change the port in `.env`
+- **MongoDB not connected?** Make sure it's running locally or update \`MONGO_URI\`
+- **Tests fail?** Ensure server is running before executing Cypress
 
+---
+
+## 📬 Contact
+
+For bugs, feedback, or contributions:  
+📧 [04gourabpal@gmail.com](mailto:04gourabpal@gmail.com)  
+🔗 GitHub: [https://github.com/gourabpal04/Real_Time_Collaboration](https://github.com/gourabpal04/Real_Time_Collaboration)
+
+---
+EOF
