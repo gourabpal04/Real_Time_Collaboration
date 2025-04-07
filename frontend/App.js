@@ -1,30 +1,27 @@
-import React, { useState } from "react";
-import Editor from "./Editor";
-import ChatBox from "./ChatBox";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Auth from './components/Auth';
+import Editor from './components/Editor';
+import ChatBox from './components/ChatBox';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-const App = () => {
-  const [showEditor, setShowEditor] = useState(true);
-  const [showChat, setShowChat] = useState(true);
-
-  const toggleEditor = () => setShowEditor((prev) => !prev);
-  const toggleChat = () => setShowChat((prev) => !prev);
-
+function App() {
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <h1>Real-Time Collaboration App</h1>
-        <div className="toggle-buttons">
-          <button onClick={toggleEditor}>{showEditor ? "Hide Editor" : "Show Editor"}</button>
-          <button onClick={toggleChat}>{showChat ? "Hide Chat" : "Show Chat"}</button>
-        </div>
-      </header>
-      <main className="main-content">
-        {showEditor && <Editor />}
-        {showChat && <ChatBox />}
-      </main>
-    </div>
+    <Router>
+      <Header />
+      <div className="app-body">
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Auth />} />
+          <Route path="/editor/:docId" element={<Editor />} />
+          <Route path="/chat" element={<ChatBox />} />
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   );
-};
+}
 
 export default App;
