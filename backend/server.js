@@ -2,32 +2,35 @@ require('dotenv').config();
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
-const { Server } = require('socket.io');
-const path = require('path');
+const connectDB = require('./config/db');
+const errorHandler = require('./middleware/errorHandler');
+const authRoutes = require('./routes/authRoutes');
+const editorRoutes = require('./routes/editorRoutes');
+const chatRoutes = require('./routes/chatRoutes');
+const { setupEditorSocket } = require('./sockets/editorSocket');
+const { setupChatSocket } = require('./sockets/chatSocket');
 
 const app = express();
 const server = http.createServer(app);
+const io = require('socket.io')(server, {
+  cors: { origin: process.env.FRONTEND_URL || '*' }
+});
+
+connectDB();
+
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/editor', editorRoutes);
+app.use('/api/chat', chatRoutes);
+
+app.use(errorHandler);
+
+setupEditorSocket(io);
+setupChatSocket(io);
 
 const PORT = process.env.PORT || 5000;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "*";
-
-app.use(cors({ origin: CORS_ORIGIN }));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
-const io = new Server(server, {
-  cors: { origin: CORS_ORIGIN, methods: ["GET", "POST"] }
-});
-
-io.on("connection", (socket) => {
-  console.log(`User connected: ${socket.id}`);
-
-  socket.on("message", (data) => io.emit("message", data));
-  socket.on("disconnect", () => console.log(`User disconnected: ${socket.id}`));
-});
-
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
