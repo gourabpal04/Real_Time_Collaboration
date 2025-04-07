@@ -1,82 +1,203 @@
-# Real-Time Collaboration App
+# ✨ Real-Time Collaboration Platform
 
-This real-time collaboration app allows users to **edit** and **chat** in real-time. The editor allows simultaneous text editing while the chatbox provides instant messaging. Both features are powered by **Socket.IO** for real-time communication and **React** for frontend management.
+![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![Coverage](https://img.shields.io/badge/coverage-90%25-green.svg)
 
-## Getting Started with Create React App
+> A modern, full-stack collaboration platform with real-time document editing, live chat, and developer-centric features.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## 📁 Project Structure
 
-In the project directory, you can run:
+<details>
+  <summary>📂 Click to expand full file tree</summary>
 
-### `npm start`
+```
+Real_Time_Collaboration/
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   ├── .env
+│   ├── config/
+│   │   └── db.js
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── editorRoutes.js
+│   │   └── chatRoutes.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── editorController.js
+│   │   └── chatController.js
+│   ├── models/
+│   │   ├── User.js
+│   │   ├── Document.js
+│   │   └── Message.js
+│   ├── middleware/
+│   │   ├── authMiddleware.js
+│   │   └── errorHandler.js
+│   ├── utils/
+│   │   ├── logger.js
+│   │   └── validator.js
+│   ├── sockets/
+│   │   ├── editorSocket.js
+│   │   └── chatSocket.js
+│   └── tests/
+│       ├── auth.test.js
+│       ├── editor.test.js
+│       └── chat.test.js
+│
+├── frontend/
+│   ├── package.json
+│   ├── .env
+│   └── src/
+│       ├── index.js
+│       ├── App.js
+│       ├── components/
+│       │   ├── Editor.js
+│       │   ├── ChatBox.js
+│       │   ├── Auth.js
+│       │   ├── Sidebar.js
+│       │   ├── Header.js
+│       │   └── Footer.js
+│       ├── hooks/
+│       │   ├── useAuth.js
+│       │   ├── useEditor.js
+│       │   └── useChat.js
+│       ├── styles/
+│       │   ├── main.css
+│       │   ├── editor.css
+│       │   └── chat.css
+│       └── utils/
+│           ├── api.js
+│           └── validators.js
+│
+├── tests/
+│   ├── e2e/
+│   │   ├── auth.e2e.js
+│   │   ├── editor.e2e.js
+│   │   ├── chat.e2e.js
+│   │   └── sharedSetup.js
+│   ├── coverage/
+│   │   └── lcov-report/
+│   └── cypress/
+│       ├── support/
+│       │   ├── commands.js
+│       │   └── e2e.js
+│       ├── fixtures/
+│       │   ├── user.json
+│       │   ├── document.json
+│       │   └── chat.json
+│       └── cypress.config.js
+│
+├── deployment/
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   └── ci-config.yml
+│
+├── docs/
+│   ├── api-docs.md
+│   ├── component-docs.md
+│   └── setup-guide.md
+│
+├── README.md
+└── .gitignore
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</details>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧰 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Layer     | Tech                                                  |
+|-----------|-------------------------------------------------------|
+| Frontend  | React.js, Tailwind CSS, WebSocket                     |
+| Backend   | Node.js, Express.js, MongoDB                          |
+| Realtime  | Socket.IO                                             |
+| Auth      | JWT (JSON Web Tokens), Bcrypt                         |
+| Testing   | Cypress, Jest, Supertest                              |
+| DevOps    | Docker, Docker Compose, GitHub Actions (CI/CD)        |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🔧 Backend Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run dev
+```
 
-### `npm run eject`
+### 🌐 Frontend Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+cd frontend
+npm install
+cp .env.example .env
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧪 Running Tests
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However, we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+cd frontend/tests
+npx cypress open    # For interactive mode
+npx cypress run     # For CI mode
+```
 
-## Learn More
+📊 Code coverage reports: `frontend/tests/coverage/lcov-report/`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🐳 Docker Deployment
 
-### Code Splitting
+```bash
+docker-compose up --build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Frontend: http://localhost:3000  
+- Backend: http://localhost:5000  
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📅 Roadmap
 
-### Making a Progressive Web App
+- [x] Realtime Document Sync
+- [x] JWT Auth with Role Support
+- [x] Real-Time Chat Feature
+- [x] Cypress Tests + Coverage
+- [ ] Export/Import Docs (📂)
+- [ ] Collaborative Cursors (🖱️)
+- [ ] Mobile UI Enhancements 📱
+- [ ] Admin Dashboard (⏳)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## ❓ FAQs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Q: Can I use this in production?**  
+A: Yes, with proper deployment configuration (e.g., HTTPS, rate limiting, auth hardening).
 
-### Deployment
+**Q: How do I add new hooks or modules?**  
+A: Follow the pattern in `frontend/src/hooks/` or `backend/controllers/`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Q: Is real-time syncing optimized?**  
+A: Yes, using WebSockets with debounce and operation batching.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📜 License
 
-## Customizing This App
+MIT © 2025 — Made with 💙 by Gourab Pal
 
-You can extend this app's functionality with new features. Here are some ideas for customization:
+---
 
-- **Real-time collaborative editor:** Extend the editor to support rich text formatting or syntax highlighting.
-- **User authentication:** Integrate user authentication to personalize the experience, showing different names and profiles in the chat.
-- **File sharing:** Enable users to send files through the chat.
+## 🌟 Give it a Star!
+
+If you like this project, consider [starring ⭐ the repo](#) to show your support!
