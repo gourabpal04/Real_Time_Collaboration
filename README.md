@@ -155,17 +155,6 @@ npx cypress run     # For CI mode
 
 ---
 
-## 🐳 Docker Deployment
-
-```bash
-docker-compose up --build
-```
-
-- Frontend: http://localhost:3000  
-- Backend: http://localhost:5000  
-
----
-
 ## 📅 Roadmap
 
 - [x] Realtime Document Sync
