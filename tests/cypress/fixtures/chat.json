@@ -1,0 +1,12 @@
+[
+  {
+    "sender": "testuser@example.com",
+    "message": "Hello, team!",
+    "timestamp": "2025-04-07T10:00:00Z"
+  },
+  {
+    "sender": "user2@example.com",
+    "message": "Hi! Let's collaborate!",
+    "timestamp": "2025-04-07T10:01:00Z"
+  }
+]
