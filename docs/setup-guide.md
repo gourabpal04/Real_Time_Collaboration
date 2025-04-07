@@ -46,9 +46,6 @@ Real_Time_Collaboration/
 🚀 Start the App
 Start backend & frontend separately:
 
-bash
-Copy
-Edit
 # Backend
 cd backend
 npm run dev
@@ -59,36 +56,21 @@ npm start
 🧪 Run Tests
 Cypress E2E tests:
 
-bash
-Copy
-Edit
 cd frontend/tests
 npx cypress open
 For headless testing with coverage:
 
-bash
-Copy
-Edit
 npx cypress run
 🐳 Docker Deployment
 To run everything using Docker:
 
-bash
-Copy
-Edit
 docker-compose up --build
 To stop:
 
-bash
-Copy
-Edit
 docker-compose down
 📊 Code Coverage
 After running tests with coverage, results are saved in:
 
-swift
-Copy
-Edit
 frontend/tests/coverage/lcov-report/index.html
 Open in a browser to view.
 
