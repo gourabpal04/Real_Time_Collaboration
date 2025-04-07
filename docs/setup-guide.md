@@ -1,172 +1,113 @@
-```markdown
 # 🛠️ Real-Time Collaboration App – Setup Guide
 
-Welcome to the complete setup documentation for the **Real-Time Collaboration App**.
+Welcome! This guide will help you get the Real-Time Collaboration App up and running, test it, and understand its structure.
 
 ---
 
-## 📚 Table of Contents
+## 📘 Table of Contents
 
 - [🧱 Project Structure](#project-structure)
-- [⚙️ Environment Variables](#environment-variables)
-- [🚀 Running the App Locally](#running-the-app-locally)
-- [🧪 Running Cypress E2E Tests](#running-cypress-e2e-tests)
-- [🐳 Docker](#docker)
-- [📄 Code Coverage](#code-coverage)
-- [📡 WebSocket Communication](#websocket-communication)
-- [🧼 Troubleshooting](#troubleshooting)
+- [⚙️ Setup & Environment](#setup--environment)
+- [🚀 Start the App](#start-the-app)
+- [🧪 Run Tests](#run-tests)
+- [🐳 Docker Deployment](#docker-deployment)
+- [📊 Code Coverage](#code-coverage)
+- [💬 WebSocket Features](#websocket-features)
+- [🛠️ Troubleshooting](#troubleshooting)
 - [📬 Contact](#contact)
 
 ---
 
 ## 🧱 Project Structure
 
-```bash
-Real_Time_Collaboration/
-├── backend/
-│   ├── server.js
-│   ├── ...
-│
-├── frontend/
-│   ├── src/
-│   ├── ...
-│
-├── tests/
-│   └── e2e/
-│   └── ...
-│
-├── deployment/
-│   ├── Dockerfile
-│   ├── docker-compose.yml
-│   └── ci-config.yml
-│
-├── docs/
-│   └── setup-guide.md
-```
+Real_Time_Collaboration/  
+├── backend/ (Express API + Socket.IO)  
+├── frontend/ (React + WebSocket Client)  
+├── tests/ (End-to-End Cypress Tests)  
+├── deployment/ (Docker & CI config)  
+├── docs/ (Documentation)  
 
 ---
 
-## ⚙️ Environment Variables
+## ⚙️ Setup & Environment
 
-Create a `.env` file in both the `backend/` and `frontend/` folders.
+1. **Install Node.js & MongoDB**
+2. Create `.env` files in both `/backend` and `/frontend`:
+   - Example for backend:
+     ```
+     PORT=5000
+     MONGO_URI=mongodb://localhost:27017/realtimeapp
+     JWT_SECRET=your_secret_key
+     ```
 
-### Backend `.env`
-```env
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/collab
-JWT_SECRET=your_jwt_secret
-```
+3. Install dependencies:
+   ```bash
+   cd backend && npm install
+   cd ../frontend && npm install
+🚀 Start the App
+Start backend & frontend separately:
 
-### Frontend `.env`
-```env
-REACT_APP_BACKEND_URL=http://localhost:5000
-```
-
----
-
-## 🚀 Running the App Locally
-
-### Prerequisites:
-- Node.js ≥ 16
-- MongoDB running locally
-
-### Step-by-Step:
-
-```bash
+bash
+Copy
+Edit
 # Backend
 cd backend
-npm install
 npm run dev
 
 # Frontend
-cd ../frontend
-npm install
+cd frontend
 npm start
-```
+🧪 Run Tests
+Cypress E2E tests:
 
----
-
-## 🧪 Running Cypress E2E Tests
-
-```bash
+bash
+Copy
+Edit
 cd frontend/tests
 npx cypress open
-```
+For headless testing with coverage:
 
-Or for headless:
-```bash
+bash
+Copy
+Edit
 npx cypress run
-```
+🐳 Docker Deployment
+To run everything using Docker:
 
-Ensure both backend and frontend servers are running before testing.
-
----
-
-## 🐳 Docker
-
-To spin everything up in Docker:
-
-```bash
+bash
+Copy
+Edit
 docker-compose up --build
-```
+To stop:
 
-### Docker Compose services:
-- **backend** → Node.js + Express + Mongo
-- **frontend** → React app
-- **mongo** → MongoDB container
+bash
+Copy
+Edit
+docker-compose down
+📊 Code Coverage
+After running tests with coverage, results are saved in:
 
----
-
-## 📄 Code Coverage
-
-To generate and view frontend coverage:
-```bash
-cd frontend
-npm run test:coverage
-```
-
-Results appear in:
-```
+swift
+Copy
+Edit
 frontend/tests/coverage/lcov-report/index.html
-```
+Open in a browser to view.
 
-Open in browser to view.
+💬 WebSocket Features
+Real-time text syncing between users
 
----
+Instant messaging via chat socket
 
-## 📡 WebSocket Communication
+Presence indicators (who’s online/editing)
 
-We use **Socket.IO** for:
-- Real-time document editing
-- Chat messaging
-- Presence detection
+🛠️ Troubleshooting
+Port in use? Stop all running apps or change the port in .env
 
-All sockets are handled inside:
-```bash
-backend/sockets/
-```
+MongoDB not connected? Make sure it's running locally or update MONGO_URI
 
----
+Tests fail? Ensure server is running before executing Cypress
 
-## 🧼 Troubleshooting
-
-- ❌ **CORS issues**  
-  ✅ Make sure CORS is properly enabled on backend.
-
-- ❌ **MongoDB connection fails**  
-  ✅ Check if MongoDB is running locally or update `MONGO_URI`.
-
-- ❌ **Frontend cannot reach backend**  
-  ✅ Verify `.env` file and proxy settings.
-
----
-
-## 📬 Contact
-
-Maintained by **Gourab Pal**  
-📧 [LinkedIn](https://www.linkedin.com/in/gourab-pal-828078248/)
-```
-
----
-
-Let me know if you want this setup-guide exported to a downloadable `.md` file or included in your README as a section!
+📬 Contact
+For bugs, feedback, or contributions:
+📧 04gourabpal@gmail.com
+🔗 GitHub: https://github.com/gourabpal04/Real_Time_Collaboration
