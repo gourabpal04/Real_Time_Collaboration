@@ -1,0 +1,7 @@
+{
+  "id": "doc123",
+  "title": "Demo Collaborative Document",
+  "content": "<p>This is a <strong>shared</strong> document for testing.</p>",
+  "owner": "testuser@example.com",
+  "collaborators": ["user2@example.com", "user3@example.com"]
+}
