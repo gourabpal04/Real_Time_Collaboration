@@ -1,4 +1,3 @@
-cat > setup-guide.md << 'EOF'
 # 🛠️ Real-Time Collaboration App – Setup Guide
 
 Welcome! This guide will help you get the Real-Time Collaboration App up and running, test it, and understand its structure.
@@ -15,6 +14,7 @@ Welcome! This guide will help you get the Real-Time Collaboration App up and run
 - [📊 Code Coverage](#code-coverage)
 - [💬 WebSocket Features](#websocket-features)
 - [🛠️ Troubleshooting](#troubleshooting)
+- [📬 Contact](#contact)
 
 ---
 
@@ -128,7 +128,7 @@ Open in a browser to view.
 
 For bugs, feedback, or contributions:  
 📧 [04gourabpal@gmail.com](mailto:04gourabpal@gmail.com)  
-🔗 GitHub: [https://github.com/gourabpal04/Real_Time_Collaboration](https://github.com/gourabpal04/Real_Time_Collaboration)
+🔗 GitHub: [github.com/gourabpal04/Real_Time_Collaboration](https://github.com/gourabpal04/Real_Time_Collaboration)  
+🔗 LinkedIn: [linkedin.com/in/gourab-pal-828078248](https://www.linkedin.com/in/gourab-pal-828078248)
 
 ---
-EOF
