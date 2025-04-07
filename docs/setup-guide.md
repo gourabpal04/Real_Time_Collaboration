@@ -1,5 +1,3 @@
----
-
 ```markdown
 # 🛠️ Real-Time Collaboration App – Setup Guide
 
