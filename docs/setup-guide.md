@@ -1,5 +1,3 @@
-Here's the **full content** for `setup-guide.md` that you can directly save as a `.md` file:
-
 ```markdown
 # ⚙️ Setup Guide - Real-Time Collaboration App
 
