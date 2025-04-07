@@ -1,22 +1,9 @@
-// commands.js
-
-Cypress.Commands.add('login', (email, password) => {
-  cy.visit('/login');
-  cy.get('input[name="email"]').type(email);
-  cy.get('input[name="password"]').type(password);
-  cy.get('button[type="submit"]').click();
-});
-
-Cypress.Commands.add('register', (username, email, password) => {
-  cy.visit('/register');
-  cy.get('input[name="username"]').type(username);
-  cy.get('input[name="email"]').type(email);
-  cy.get('input[name="password"]').type(password);
-  cy.get('button[type="submit"]').click();
-});
-
-Cypress.Commands.add('createDocument', (title) => {
-  cy.get('button#create-doc').click();
-  cy.get('input[name="title"]').type(title);
-  cy.get('button#save-doc').click();
+// Custom command to login a test user
+Cypress.Commands.add('login', (email = 'testuser@example.com', password = 'testpass') => {
+  cy.request('POST', 'http://localhost:5000/api/auth/login', {
+    email,
+    password,
+  }).then((response) => {
+    localStorage.setItem('token', response.body.token);
+  });
 });
