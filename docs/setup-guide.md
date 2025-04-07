@@ -43,6 +43,7 @@ Real_Time_Collaboration/
    ```bash
    cd backend && npm install
    cd ../frontend && npm install
+   
 🚀 Start the App
 Start backend & frontend separately:
 
@@ -53,6 +54,7 @@ npm run dev
 # Frontend
 cd frontend
 npm start
+
 🧪 Run Tests
 Cypress E2E tests:
 
@@ -61,6 +63,7 @@ npx cypress open
 For headless testing with coverage:
 
 npx cypress run
+
 🐳 Docker Deployment
 To run everything using Docker:
 
@@ -68,11 +71,11 @@ docker-compose up --build
 To stop:
 
 docker-compose down
+
 📊 Code Coverage
 After running tests with coverage, results are saved in:
 
 frontend/tests/coverage/lcov-report/index.html
-Open in a browser to view.
 
 💬 WebSocket Features
 Real-time text syncing between users
