@@ -1,59 +1,44 @@
-import React, { useState, useEffect, useRef } from "react";
-import { io } from "socket.io-client";
-import "./ChatBox.css";
+// ChatBox.js
+import React, { useEffect, useState, useRef } from 'react';
+import { useChat } from '../hooks/useChat';
+import '../styles/chat.css';
 
-const socket = io("http://localhost:5000");
+const ChatBox = ({ user, roomId }) => {
+  const { messages, sendMessage, socket } = useChat(roomId);
+  const [input, setInput] = useState('');
+  const chatEndRef = useRef(null);
 
-const ChatBox = () => {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-  const messageEndRef = useRef(null);
-
-  useEffect(() => {
-    socket.on("message", (data) => {
-      setMessages((prev) => [...prev, data]);
-    });
-    return () => socket.off("message");
-  }, []);
-
-  useEffect(() => {
-    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const sendMessage = () => {
+  const handleSend = () => {
     if (input.trim()) {
-      const newMessage = {
-        text: input,
-        sender: "You",
-        timestamp: new Date().toLocaleTimeString()
-      };
-      socket.emit("message", newMessage);
-      setMessages((prev) => [...prev, newMessage]);
-      setInput("");
+      sendMessage({ user, text: input });
+      setInput('');
     }
   };
 
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
   return (
-    <div className="chat-container">
-      <div className="chat-box">
-        {messages.map((msg, index) => (
-          <div key={index} className={`message ${msg.sender === "You" ? "my-message" : "other-message"}`}>
-            <span className="sender">{msg.sender}</span>
+    <div className="chatbox">
+      <div className="messages">
+        {messages.map((msg, idx) => (
+          <div key={idx} className={`message ${msg.user === user ? 'own' : ''}`}>
+            <span className="sender">{msg.user}</span>
             <p>{msg.text}</p>
-            <span className="timestamp">{msg.timestamp}</span>
           </div>
         ))}
-        <div ref={messageEndRef} />
+        <div ref={chatEndRef}></div>
       </div>
-      <div className="input-box">
+      <div className="chat-input">
         <input
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && sendMessage()}
           placeholder="Type a message..."
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
         />
-        <button onClick={sendMessage}>Send</button>
+        <button onClick={handleSend}>Send</button>
       </div>
     </div>
   );
