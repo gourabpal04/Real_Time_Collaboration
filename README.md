@@ -1,4 +1,4 @@
-# ✨ Real-Time Collaboration Platform
+# ✨ CollabBoard
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
