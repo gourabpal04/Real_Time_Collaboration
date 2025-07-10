@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000',
   withCredentials: true,
 });
 
@@ -13,15 +13,19 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-export const login = (credentials) => API.post('/auth/login', credentials);
-export const register = (userInfo) => API.post('/auth/register', userInfo);
-export const fetchUser = () => API.get('/auth/user');
+export const login = (credentials) => API.post('/api/auth/login', credentials);
+export const register = (userInfo) => API.post('/api/auth/register', userInfo);
+export const fetchUser = () => API.get('/api/auth/user');
 
-export const saveDocument = (docId, content) => API.post(`/docs/${docId}`, { content });
-export const loadDocument = (docId) => API.get(`/docs/${docId}`);
+// Additional auth functions for compatibility
+export const loginUser = (credentials) => API.post('/api/auth/login', credentials);
+export const registerUser = (userInfo) => API.post('/api/auth/register', userInfo);
+
+export const saveDocument = (docId, content) => API.post(`/api/docs/${docId}`, { content });
+export const loadDocument = (docId) => API.get(`/api/docs/${docId}`);
 
 export const sendMessage = (chatRoomId, message) =>
-  API.post(`/chat/${chatRoomId}`, { message });
-export const fetchMessages = (chatRoomId) => API.get(`/chat/${chatRoomId}`);
+  API.post(`/api/chat/${chatRoomId}`, { message });
+export const fetchMessages = (chatRoomId) => API.get(`/api/chat/${chatRoomId}`);
 
 export default API;
