@@ -22,7 +22,7 @@ check_service() {
 }
 
 # Check if running in Docker
-if docker ps --format "table {{.Names}}" | grep -q "collabboard"; then
+if command -v docker > /dev/null 2>&1 && docker ps --format "table {{.Names}}" | grep -q "collabboard"; then
     echo "📦 Docker services detected"
     
     # Check Docker services
@@ -39,7 +39,7 @@ else
     
     # Check development services
     check_service "Backend API" "http://localhost:5000/api/health"
-    check_service "Frontend" "http://localhost:5173"
+    check_service "Frontend" "http://localhost:5173" || echo "ℹ️  Frontend may not be running"
     
     # Check MongoDB
     if pgrep -x "mongod" > /dev/null; then
