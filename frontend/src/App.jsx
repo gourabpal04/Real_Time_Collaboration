@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Editor from './components/Editor';
-import ChatBox from './components/ChatBox';
-import Auth from './components/Auth';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Editor from './components/Editor.jsx';
+import ChatBox from './components/ChatBox.jsx';
+import Auth from './components/Auth.jsx';
+import Sidebar from './components/Sidebar.jsx';
+import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 import { useAuth } from './hooks/useAuth';
 import './styles/main.css';
 
