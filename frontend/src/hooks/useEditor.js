@@ -64,4 +64,5 @@ const useEditor = (docId) => {
   };
 };
 
+export { useEditor };
 export default useEditor;
