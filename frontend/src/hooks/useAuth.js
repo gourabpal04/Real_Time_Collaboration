@@ -4,12 +4,14 @@ import axios from '../utils/api';
 
 const useAuth = () => {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = async (email, password) => {
     try {
       const res = await axios.post('/api/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
       setUser(res.data.user);
+      setIsAuthenticated(true);
       return { success: true };
     } catch (err) {
       return { success: false, message: err.response?.data?.message || 'Login failed' };
@@ -21,6 +23,7 @@ const useAuth = () => {
       const res = await axios.post('/api/auth/register', { name, email, password });
       localStorage.setItem('token', res.data.token);
       setUser(res.data.user);
+      setIsAuthenticated(true);
       return { success: true };
     } catch (err) {
       return { success: false, message: err.response?.data?.message || 'Registration failed' };
@@ -30,6 +33,7 @@ const useAuth = () => {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
+    setIsAuthenticated(false);
   };
 
   useEffect(() => {
@@ -41,6 +45,7 @@ const useAuth = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data.user);
+        setIsAuthenticated(true);
       } catch (err) {
         console.error('Auth error:', err);
         logout();
@@ -50,7 +55,8 @@ const useAuth = () => {
     fetchUser();
   }, []);
 
-  return { user, login, register, logout };
+  return { user, login, register, logout, isAuthenticated };
 };
 
+export { useAuth };
 export default useAuth;
