@@ -46,13 +46,17 @@ for script in "${scripts[@]}"; do
     fi
 done
 
-# Test 3: Validate Docker Compose configuration
+# Test 3: Validate Docker Compose configuration (skip if Docker not available)
 echo "🐳 Validating Docker Compose configuration..."
-if docker-compose -f deployment/docker-compose.prod.yml config > /dev/null 2>&1; then
-    echo "✅ Docker Compose configuration is valid"
+if command -v docker-compose > /dev/null 2>&1; then
+    if docker-compose -f deployment/docker-compose.prod.yml config > /dev/null 2>&1; then
+        echo "✅ Docker Compose configuration is valid"
+    else
+        echo "❌ Docker Compose configuration is invalid"
+        exit 1
+    fi
 else
-    echo "❌ Docker Compose configuration is invalid"
-    exit 1
+    echo "ℹ️  Docker not available in this environment, skipping Docker validation"
 fi
 
 # Test 4: Check backend health endpoint
