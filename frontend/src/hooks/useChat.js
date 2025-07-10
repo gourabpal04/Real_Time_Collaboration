@@ -54,4 +54,5 @@ const useChat = (roomId, user) => {
   };
 };
 
+export { useChat };
 export default useChat;
